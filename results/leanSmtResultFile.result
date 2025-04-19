@@ -1,0 +1,6 @@
+Total elapsed time: 4399 ms
+
+Summary:
+
+0 S 1905 12106878 AbsoluteValue.map_units_int_smul.
+1 E 2463 16369520 AbsoluteValue.map_units_int.

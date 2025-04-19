@@ -1,4 +1,5 @@
 import Auto.Tactic
+/- Commenting out because we don't have Duper as a dependency
 import Duper.Tactic
 
 open Lean Auto
@@ -14,3 +15,4 @@ def Auto.duperPort (lemmas : Array Lemma) (inhs : Array Lemma) : MetaM Expr := d
   Duper.runDuperPortfolioMode
     (lemmas.toList.map (fun ⟨e₁, e₂, ns, b⟩ => ⟨e₁, e₂, ns, b, .none⟩))
     .none ⟨true, .none, .none, .none, .none, .none⟩ .none
+-/
