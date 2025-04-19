@@ -5,7 +5,7 @@ package hammertest {
   -- add package configuration options here
 }
 
-require smt from "../lean-smt/"
+require smt from git "https://github.com/JOSHCLUNE/lean-smt.git" @ "main"
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ "v4.16.0"
