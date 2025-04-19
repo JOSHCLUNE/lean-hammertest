@@ -29,7 +29,6 @@ def runAutoOnJson (cfg : EvalAutoConfig) (fname : String) : CoreM Unit := do
 set_option maxHeartbeats 200000000
 #eval runAutoOnJson
   { solverConfig := .native, maxHeartbeats := 200000,
-    logFile := "results/leanSmtLogFile.log", resultFile := "results/leanSmtResultFile.result",
+    logFile := "results/IntNamesAll.log", resultFile := "results/IntNamesAll.result",
     nonterminates := #[] }
-  "/Users/joshClune/Desktop/lean-hammertest/IntNamesTwo.json"
-  -- "/Users/joshClune/Desktop/ntp-toolkit/IntNamesAll.json"
+  "/Users/joshClune/Desktop/ntp-toolkit/IntNamesAll.json"
