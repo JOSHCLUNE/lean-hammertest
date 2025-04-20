@@ -13,12 +13,13 @@ do
 	
 	echo "About to check $f ($COUNT / $TOTAL)"
 	echo "ListNames/$f" > nextFile.txt
-	
-	# executable="lake build TestLeanSMT"
-	# timeout 30 $executable >> /dev/null 2> /dev/null
-	# if [ $? -eq 124 ]; then
-	#	echo "$f :: Bash timeout" >> results/ListNamesAll.result
-	# fi
+	echo " " >> TestLeanSMT.lean # Hack to ensure that lake build TestLeanSMT actually rebuilds
+
+	executable="lake build TestLeanSMT"
+	timeout 30 $executable >> /dev/null 2> /dev/null
+	if [ $? -eq 124 ]; then
+		echo "$f :: Bash timeout" >> results/ListNamesAll.result
+	fi
 	
 	COUNT=$(($COUNT+1))
 done
