@@ -24,11 +24,25 @@ def runAutoOnJson (cfg : EvalAutoConfig) (fname : String) : CoreM Unit := do
     let gtPremises := gtPremises.map String.toName
     declNames := declNames.push declName
     gtPremisesArr := gtPremisesArr.push gtPremises
-  runAutoOnConsts cfg declNames gtPremisesArr (withPrint := true)
+  runAutoOnConsts cfg declNames gtPremisesArr
 
+/-
 set_option maxHeartbeats 200000000
 #eval runAutoOnJson
   { solverConfig := .native, maxHeartbeats := 200000,
-    logFile := "results/IntNamesAll.log", resultFile := "results/IntNamesAll.result",
+    logFile := "results/IntNamesTwo.log", resultFile := "results/IntNamesTwo.result",
     nonterminates := #[] }
-  "/Users/joshClune/Desktop/ntp-toolkit/IntNamesAll.json"
+  "IntNamesTwo.json"
+  -- "/Users/joshClune/Desktop/ntp-toolkit/IntNamesAll.json"
+-/
+
+def runAutoOnJsonNoArg : CoreM Unit := do
+  let cfg : EvalAutoConfig :=
+    { solverConfig := .native, maxHeartbeats := 200000,
+      logFile := "results/IntNamesTwo.log", resultFile := "results/IntNamesTwo.result",
+      nonterminates := #[] }
+  let #[nextFile] ← IO.FS.lines "nextFile.txt"
+    | throwError "Bad nextFile.txt"
+  runAutoOnJson cfg nextFile
+
+-- #eval runAutoOnJsonNoArg
